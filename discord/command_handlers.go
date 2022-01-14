@@ -193,6 +193,16 @@ func (bot *Bot) HandleCommand(isAdmin, isPermissioned bool, sett *storage.GuildS
 					}
 				}
 			}
+		case command.Unmute:
+			userID, err := extractUserIDFromMention(args[1])
+			if err != nil {
+				log.Println(err)
+			} else {
+				log.Print(fmt.Sprintf("Unmute player %s", userID))
+				s.GuildMemberMute(m.GuildID, userID, false)
+				s.GuildMemberDeafen(m.GuildID, userID, false)
+			}
+
 		case command.UnmuteAll:
 			dgs := bot.RedisInterface.GetReadOnlyDiscordGameState(gsr)
 			bot.applyToAll(dgs, false, false)

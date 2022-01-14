@@ -15,6 +15,7 @@ const (
 	Refresh
 	Link
 	Unlink
+	Unmute
 	UnmuteAll
 	Force
 	Settings
@@ -215,6 +216,28 @@ var AllCommands = []Command{
 		IsOperator: true,
 	},
 	{
+		CommandType: Unmute,
+		Command:     "unmute",
+		Example:     "unmute",
+		ShortDesc: &i18n.Message{
+			ID:    "commands.AllCommands.Unmute.shortDesc",
+			Other: "Force the bot to unmute specific player",
+		},
+		Description: &i18n.Message{
+			ID:    "commands.AllCommands.Unmute.desc",
+			Other: "Force the bot to unmute specific player",
+		},
+		Arguments: &i18n.Message{
+			ID:    "commands.AllCommands.Unmute.args",
+			Other: "None",
+		},
+		Aliases:    []string{"unm"},
+		IsSecret:   true,
+		Emoji:      "",
+		IsAdmin:    false,
+		IsOperator: true,
+	},
+	{
 		CommandType: UnmuteAll,
 		Command:     "unmuteall",
 		Example:     "unmuteall",
@@ -230,7 +253,7 @@ var AllCommands = []Command{
 			ID:    "commands.AllCommands.UnmuteAll.args",
 			Other: "None",
 		},
-		Aliases:    []string{"unmute", "ua"},
+		Aliases:    []string{"ua"},
 		IsSecret:   false,
 		Emoji:      "🔊",
 		IsAdmin:    false,
