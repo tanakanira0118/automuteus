@@ -2,11 +2,12 @@ package discord
 
 import (
 	"fmt"
-	"github.com/automuteus/automuteus/metrics"
-	"github.com/automuteus/utils/pkg/settings"
 	"log"
 	"regexp"
 	"strings"
+
+	"github.com/automuteus/automuteus/metrics"
+	"github.com/automuteus/utils/pkg/settings"
 
 	"github.com/bwmarrin/discordgo"
 	"github.com/nicksnyder/go-i18n/v2/i18n"
