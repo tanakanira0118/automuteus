@@ -3,8 +3,6 @@ package main
 import (
 	"errors"
 	"fmt"
-	"github.com/automuteus/utils/pkg/locale"
-	storage2 "github.com/automuteus/utils/pkg/storage"
 	"io"
 	"log"
 	"math/rand"
@@ -16,6 +14,9 @@ import (
 	"syscall"
 	"time"
 
+	"github.com/automuteus/utils/pkg/locale"
+	storage2 "github.com/automuteus/utils/pkg/storage"
+
 	"github.com/automuteus/automuteus/storage"
 
 	"github.com/automuteus/automuteus/discord"
@@ -23,7 +24,7 @@ import (
 )
 
 var (
-	version = "6.16.0"
+	version = "6.16.7"
 	commit  = "none"
 	date    = "unknown"
 )
