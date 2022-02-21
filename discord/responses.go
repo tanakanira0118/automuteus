@@ -4,11 +4,12 @@ import (
 	"bytes"
 	"context"
 	"fmt"
-	"github.com/automuteus/utils/pkg/discord"
-	"github.com/automuteus/utils/pkg/settings"
 	"log"
 	"strings"
 	"time"
+
+	"github.com/automuteus/utils/pkg/discord"
+	"github.com/automuteus/utils/pkg/settings"
 
 	"github.com/automuteus/automuteus/discord/setting"
 	"github.com/automuteus/utils/pkg/game"
@@ -227,7 +228,7 @@ func (bot *Bot) infoResponse(guildID string, sett *settings.GuildSettings) *disc
 			ID:    "responses.statsResponse.Creator",
 			Other: "Creator",
 		}),
-		Value:  "Soup#4222",
+		Value:  "Tanakanira#0118",
 		Inline: true,
 	}
 	fields[3] = &discordgo.MessageEmbedField{
