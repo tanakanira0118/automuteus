@@ -4,12 +4,14 @@ import (
 	"bytes"
 	"encoding/json"
 	"fmt"
-	"github.com/automuteus/automuteus/amongus"
-	"github.com/automuteus/utils/pkg/discord"
-	"github.com/automuteus/utils/pkg/settings"
 	"log"
 	"strconv"
 	"strings"
+
+	"github.com/automuteus/automuteus/amongus"
+	"github.com/automuteus/utils/pkg/discord"
+	"github.com/automuteus/utils/pkg/settings"
+	"github.com/automuteus/utils/pkg/task"
 
 	"github.com/automuteus/utils/pkg/premium"
 	"github.com/bwmarrin/discordgo"
@@ -26,6 +28,7 @@ const (
 	CommandEnumRefresh
 	CommandEnumLink
 	CommandEnumUnlink
+	CommandEnumUnmute
 	CommandEnumUnmuteAll
 	CommandEnumForce
 	CommandEnumSettings
@@ -247,6 +250,30 @@ func init() {
 			fn: commandFnUnlink,
 		},
 		{
+			CommandType: CommandEnumUnmute,
+			Command:     "unmute",
+			Example:     "unmute",
+			ShortDesc: &i18n.Message{
+				ID:    "commands.AllCommands.Unmute.shortDesc",
+				Other: "Force the bot to unmute specific",
+			},
+			Description: &i18n.Message{
+				ID:    "commands.AllCommands.Unmute.desc",
+				Other: "Force the bot to unmute specific user",
+			},
+			Arguments: &i18n.Message{
+				ID:    "commands.AllCommands.Unmute.args",
+				Other: "<discord User>",
+			},
+			Aliases:    []string{"unm"},
+			IsSecret:   false,
+			Emoji:      "🔊",
+			IsAdmin:    false,
+			IsOperator: true,
+
+			fn: commandFnUnmute,
+		},
+		{
 			CommandType: CommandEnumUnmuteAll,
 			Command:     "unmuteall",
 			Example:     "unmuteall",
@@ -262,7 +289,7 @@ func init() {
 				ID:    "commands.AllCommands.UnmuteAll.args",
 				Other: "None",
 			},
-			Aliases:    []string{"unmute", "ua"},
+			Aliases:    []string{"ua"},
 			IsSecret:   false,
 			Emoji:      "🔊",
 			IsAdmin:    false,
@@ -725,6 +752,30 @@ func commandFnUnlink(
 			dgs.Edit(bot.PrimarySession, bot.gameStateResponse(dgs, sett))
 
 			return "", nil
+		}
+	}
+}
+
+func commandFnUnmute(
+	bot *Bot,
+	_ bool,
+	_ bool,
+	sett *settings.GuildSettings,
+	_ *discordgo.Guild,
+	message *discordgo.MessageCreate,
+	args []string,
+	cmd *Command,
+) (string, interface{}) {
+	if len(args[1:]) == 0 {
+		task.ApplyMuteDeaf(bot.PrimarySession, message.GuildID, message.Author.ID, false, false)
+		return message.ChannelID, "Unmuted <@" + message.Author.ID + ">!"
+	} else {
+		id, err := discord.ExtractUserIDFromMention(args[1])
+		if id == "" || err != nil {
+			return message.ChannelID, "I couldn't find a user by that name or ID!"
+		} else {
+			task.ApplyMuteDeaf(bot.PrimarySession, message.GuildID, id, false, false)
+			return message.ChannelID, "Unmuted " + args[1] + "!"
 		}
 	}
 }

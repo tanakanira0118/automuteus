@@ -214,6 +214,18 @@ other = "Discordのユーザー名との連携を解除する"
 hash = "sha1-9e139c4aa1e3c56fcad668f74e0af0232e17f470"
 other = "Discord ユーザーとの連携解除"
 
+["commands.AllCommands.Unmute.args"]
+hash = "sha1-6eef6648406c333a4035cd5e60d0bf2ecf2606d7"
+other = "[Discord ユーザー名] 指定しなければ自身"
+
+["commands.AllCommands.Unmute.desc"]
+hash = "sha1-b4b11a5550eb87ff1d2eee6097c20d76a61f4e71"
+other = "強制的にミュートを解除"
+
+["commands.AllCommands.Unmute.shortDesc"]
+hash = "sha1-73da5c6f48a7acf54733269d6a09c0307e890a6a"
+other = "強制ミュート解除"
+
 ["commands.AllCommands.UnmuteAll.args"]
 hash = "sha1-6eef6648406c333a4035cd5e60d0bf2ecf2606d7"
 other = "無し"
