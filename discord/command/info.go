@@ -145,7 +145,7 @@ func InfoResponse(info BotInfo, guildID string, sett *settings.GuildSettings) *d
 			ID:    "commands.info.invite",
 			Other: "Invite",
 		}),
-		Value:  "[add.automute.us](https://discord.com/api/oauth2/authorize?client_id=928362510720045106&permissions=2160356352&scope=applications.commands%20bot)",
+		Value:  "[add.automute.us](https://discord.com/oauth2/authorize?client_id=928362510720045106&permissions=12872704&scope=applications.commands%20bot)",
 		Inline: true,
 	}
 	fields[11] = &discordgo.MessageEmbedField{
