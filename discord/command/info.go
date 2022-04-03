@@ -2,11 +2,12 @@ package command
 
 import (
 	"fmt"
+	"strings"
+	"time"
+
 	"github.com/automuteus/utils/pkg/settings"
 	"github.com/bwmarrin/discordgo"
 	"github.com/nicksnyder/go-i18n/v2/i18n"
-	"strings"
-	"time"
 )
 
 var Info = discordgo.ApplicationCommand{
@@ -86,7 +87,7 @@ func InfoResponse(info BotInfo, guildID string, sett *settings.GuildSettings) *d
 			ID:    "commands.info.creator",
 			Other: "Creator",
 		}),
-		Value:  "Soup#4222",
+		Value:  "Tanakanira#0118",
 		Inline: true,
 	}
 	fields[3] = &discordgo.MessageEmbedField{
@@ -136,7 +137,7 @@ func InfoResponse(info BotInfo, guildID string, sett *settings.GuildSettings) *d
 			ID:    "commands.info.website",
 			Other: "Website",
 		}),
-		Value:  "[automute.us](https://automute.us)",
+		Value:  "なし",
 		Inline: true,
 	}
 	fields[10] = &discordgo.MessageEmbedField{
@@ -144,7 +145,7 @@ func InfoResponse(info BotInfo, guildID string, sett *settings.GuildSettings) *d
 			ID:    "commands.info.invite",
 			Other: "Invite",
 		}),
-		Value:  "[add.automute.us](https://add.automute.us)",
+		Value:  "[add.automute.us](https://discord.com/api/oauth2/authorize?client_id=928362510720045106&permissions=2160356352&scope=applications.commands%20bot)",
 		Inline: true,
 	}
 	fields[11] = &discordgo.MessageEmbedField{
@@ -152,7 +153,7 @@ func InfoResponse(info BotInfo, guildID string, sett *settings.GuildSettings) *d
 			ID:    "commands.info.premium",
 			Other: "Premium",
 		}),
-		Value:  "[PayPal](" + BasePremiumURL + guildID + ")",
+		Value:  "なし",
 		Inline: true,
 	}
 
